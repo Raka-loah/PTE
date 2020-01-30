@@ -19,6 +19,9 @@ Public Class Form1
         ComboBox1.DataSource = New BindingSource(music_players, Nothing)
         ComboBox1.SelectedIndex = My.Settings.SelectedIndex
         Timer2.Interval = NumericUpDown2.Value
+        If My.Settings.OutputFilePath = "music_title.txt" Then
+            TextBox5.Text = IO.Path.Combine(IO.Path.GetDirectoryName(Application.ExecutablePath), "music_title.txt")
+        End If
     End Sub
 
     ''' <summary>
@@ -172,5 +175,17 @@ Public Class Form1
         If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
             TextBox5.Text = IO.Path.Combine(FolderBrowserDialog1.SelectedPath, "music_title.txt")
         End If
+    End Sub
+
+    Private Sub 复制输出文件路径ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 复制输出文件路径ToolStripMenuItem.Click
+        Try
+            Clipboard.SetText(TextBox5.Text)
+        Catch ex As Exception
+            Debug.Print(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub 打开输出文件夹ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 打开输出文件夹ToolStripMenuItem.Click
+        Process.Start(IO.Path.GetDirectoryName(TextBox5.Text))
     End Sub
 End Class

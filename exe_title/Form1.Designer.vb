@@ -40,14 +40,18 @@ Partial Class Form1
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.复制输出文件路径ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.打开输出文件夹ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.ContextMenuStrip1.SuspendLayout()
+        Me.ContextMenuStrip2.SuspendLayout()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -176,6 +180,28 @@ Partial Class Form1
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "输出文件路径"
         '
+        'FolderBrowserDialog1
+        '
+        Me.FolderBrowserDialog1.Description = "请选择放置music_title.txt的文件夹"
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.复制输出文件路径ToolStripMenuItem, Me.打开输出文件夹ToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(181, 70)
+        '
+        '复制输出文件路径ToolStripMenuItem
+        '
+        Me.复制输出文件路径ToolStripMenuItem.Name = "复制输出文件路径ToolStripMenuItem"
+        Me.复制输出文件路径ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.复制输出文件路径ToolStripMenuItem.Text = "复制输出文件路径"
+        '
+        '打开输出文件夹ToolStripMenuItem
+        '
+        Me.打开输出文件夹ToolStripMenuItem.Name = "打开输出文件夹ToolStripMenuItem"
+        Me.打开输出文件夹ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.打开输出文件夹ToolStripMenuItem.Text = "打开输出文件夹"
+        '
         'NumericUpDown2
         '
         Me.NumericUpDown2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.exe_title.My.MySettings.Default, "MarqueeInterval", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
@@ -213,6 +239,7 @@ Partial Class Form1
         '
         'TextBox5
         '
+        Me.TextBox5.ContextMenuStrip = Me.ContextMenuStrip2
         Me.TextBox5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.exe_title.My.MySettings.Default, "OutputFilePath", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.TextBox5.Location = New System.Drawing.Point(126, 156)
         Me.TextBox5.Name = "TextBox5"
@@ -237,10 +264,6 @@ Partial Class Form1
         Me.TextBox2.Size = New System.Drawing.Size(404, 21)
         Me.TextBox2.TabIndex = 2
         Me.TextBox2.Text = Global.exe_title.My.MySettings.Default.RawPattern
-        '
-        'FolderBrowserDialog1
-        '
-        Me.FolderBrowserDialog1.Description = "请选择放置music_title.txt的文件夹"
         '
         'Form1
         '
@@ -273,6 +296,7 @@ Partial Class Form1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Process Title Extractor"
         Me.ContextMenuStrip1.ResumeLayout(False)
+        Me.ContextMenuStrip2.ResumeLayout(False)
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -303,4 +327,7 @@ Partial Class Form1
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
+    Friend WithEvents 复制输出文件路径ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 打开输出文件夹ToolStripMenuItem As ToolStripMenuItem
 End Class
