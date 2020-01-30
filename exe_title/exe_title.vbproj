@@ -19,7 +19,7 @@
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Background</UpdateMode>
+    <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>true</UpdatePeriodically>
@@ -28,11 +28,12 @@
     <InstallUrl>https://lotc.cc/Uploads/pte/</InstallUrl>
     <SupportUrl>https://lotc.cc/process-title-extractor.wtf</SupportUrl>
     <ErrorReportUrl>https://lotc.cc/process-title-extractor.wtf</ErrorReportUrl>
+    <TargetCulture>zh-Hans</TargetCulture>
     <ProductName>Process Title Extractor</ProductName>
     <PublisherName>Lair of the Cursed</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

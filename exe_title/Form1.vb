@@ -76,7 +76,7 @@ Public Class Form1
             Call Button1_Click(Timer1, New EventArgs)
             Exit Sub
         End Try
-        Debug.Print(proc_title)
+        'Debug.Print(proc_title)
         Try
             Dim dic As Dictionary(Of String, String) = get_exe_title(proc_title, TextBox2.Text)
             Dim result = TextBox3.Text
@@ -92,6 +92,7 @@ Public Class Form1
                 If Not Timer2.Enabled And last_write <> TextBox4.Text Then
                     Try
                         IO.File.WriteAllText(TextBox5.Text, TextBox4.Text)
+                        last_write = TextBox4.Text
                     Catch ex As Exception
                         MsgBox(ex.Message, vbOKOnly + vbCritical, "错误")
                         Timer2.Enabled = False
@@ -127,14 +128,19 @@ Public Class Form1
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
         If marquee_index > last_music_title.Length - NumericUpDown1.Value Then marquee_index = 0
-        If TextBox4.Text.Length >= NumericUpDown1.Value Then
-            TextBox4.Text = last_music_title.Substring(marquee_index, NumericUpDown1.Value)
-            marquee_index += 1
-        Else
-            TextBox4.Text = last_music_title
-        End If
+        Try
+            If TextBox4.Text.Length >= NumericUpDown1.Value Then
+                TextBox4.Text = last_music_title.Substring(marquee_index, Math.Min(NumericUpDown1.Value, last_music_title.Length))
+                marquee_index += 1
+            Else
+                TextBox4.Text = last_music_title.Substring(0, Math.Min(NumericUpDown1.Value, last_music_title.Length))
+            End If
+        Catch ex As Exception
+            Debug.Print(ex.Message)
+        End Try
         Try
             IO.File.WriteAllText(TextBox5.Text, TextBox4.Text)
+            last_write = TextBox4.Text
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbCritical, "错误")
             Timer2.Enabled = False
