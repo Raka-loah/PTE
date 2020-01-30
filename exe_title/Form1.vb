@@ -125,6 +125,11 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Try
+            IO.File.WriteAllText(TextBox5.Text, "")
+        Catch ex As Exception
+            Debug.Print(ex.Message) 'Well how can this possibly go wrong?
+        End Try
         My.Settings.SelectedIndex = ComboBox1.SelectedIndex
         My.Settings.Save()
     End Sub
